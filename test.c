@@ -9,12 +9,15 @@ int main(int argc, char * argv[]){
 	}
 
 	hellog_t * test = hellog_create("test.log");
-	if(test == NULL)
+	if(test == NULL){
 		fprintf(stderr,"Failed to create log file\n");
+		hellog_close(test);
+	}
 
 	int err = hellog_write(test,argv[1]);
 	if(err != 0){
 		fprintf(stderr,"<hellog_write> Returned %d\n", err);
+		hellog_close(test);
 		return -1;
 	}
 	hellog_close(test);
