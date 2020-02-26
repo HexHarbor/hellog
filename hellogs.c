@@ -3,25 +3,26 @@
 
 
 hellog_t * hellog_create(char * filename){
+	hellog_t * new_log = malloc(sizeof(hellog_t));
+	if (new_log == NULL)
+		return NULL;
+	
 	new_log->filename = filename;
 	new_log->fp = fopen(new_log->filename, "a");
+
 	if (new_log->fp == NULL){
+		free(new_log);
 		return NULL;
 	}
-	
-	hellog_t * new_log = malloc(sizeof(hellog_t));
-	if ( new_log == NULL )
-		return NULL;
-
 	return new_log;
 }
 
 void hellog_close(hellog_t * log){
-	if ( log != NULL){
+	if (log != NULL){
 		fclose(log->fp);
 		free(log);
 	}
-	if ( log->fp != NULL )
+	else if (log->fp != NULL)
 	{
 		fclose(log->fp);
 	}

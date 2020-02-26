@@ -10,7 +10,7 @@ int main(int argc, char * argv[]){
 
 	hellog_t * test = hellog_create("test.log");
 	if(test == NULL){
-		fprintf(stderr,"Failed to create log file\n");
+		fprintf(stderr,"Failed to create log file or log object\n");
 		hellog_close(test);
 	}
 
