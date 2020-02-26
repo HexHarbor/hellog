@@ -5,7 +5,7 @@
 int main(int argc, char * argv[]){
 	if(argc < 2){
 		printf("Usage: ./test str\n");
-		exit(0);
+		return 0;
 	}
 
 	hellog_t * test = hellog_create("test.log");
